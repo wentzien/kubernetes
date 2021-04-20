@@ -6,6 +6,7 @@
 * Full network connectivity between all machines in the cluster (public or private network is fine).
 * Unique hostname, MAC address, and product_uuid for every node.
 * Certain ports are open on your machines.
+
 * Diable Swap:
     ```bash
     swapoff -a; sed -i '/swap/d' /etc/fstab
