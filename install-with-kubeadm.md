@@ -65,7 +65,12 @@
     sudo mkdir -p /etc/containerd \
     && sudo containerd config default | sudo tee /etc/containerd/config.toml
     ```
-
+    
+* Open config.toml:
+    ```bash
+    nano /etc/containerd/config.toml
+    ```
+    
 * Configure containerd to use systemd cgroup drive with runc by editing conf file and adding:
     ```bash
     [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
