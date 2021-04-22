@@ -146,7 +146,10 @@
     ```
 
 ## Do this on kWorker:
-* Copy and Pate the "Get cluster join command"
+* Copy and Pate the "Get cluster join command", simliar to:
+    ```bash
+    kubeadm join 10.0.2.7:6443 --token e2ctwm.barg1e4w35lg4kej --discovery-token-ca-cert-hash sha256:ea81b70854c915a8d965b038f897261affc4889398b46e1cea3b3f1fddd95036
+    ```
 
 
 Done
