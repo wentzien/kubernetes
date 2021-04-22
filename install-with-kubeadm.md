@@ -7,14 +7,14 @@
 * Unique hostname, MAC address, and product_uuid for every node.
 * Certain ports are open on your machines.
 
-Do this on both kMaster and kWorker:
+## Do this on both kMaster and kWorker:
 
 * Diable Swap:
     ```bash
     swapoff -a; sed -i '/swap/d' /etc/fstab
     ```
 
-## 2. Install Containerd Engine
+### 2. Install Containerd Engine
 
 * Install pre-requisites for containerd
     ```bash
@@ -77,7 +77,7 @@ Do this on both kMaster and kWorker:
     sudo systemctl restart containerd
     ```
 
-## 3. Install Kubernetes Components
+### 3. Install Kubernetes Components
 
 * Install required dependencies
     ```bash
@@ -116,7 +116,7 @@ Do this on both kMaster and kWorker:
     && sudo systemctl restart kubelet
     ```
 
-Do this on kMaster:
+## Do this on kMaster:
 
 * Initialisation with kubeadm
     ```bash
@@ -145,7 +145,7 @@ Do this on kMaster:
     kubectl get nodes
     ```
 
-Do this on kWorker:
+## Do this on kWorker:
 * Copy and Pate the "Get cluster join command"
 
 
