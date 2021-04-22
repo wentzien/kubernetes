@@ -7,6 +7,8 @@
 * Unique hostname, MAC address, and product_uuid for every node.
 * Certain ports are open on your machines.
 
+Do this on both kMaster and kWorker:
+
 * Diable Swap:
     ```bash
     swapoff -a; sed -i '/swap/d' /etc/fstab
@@ -114,6 +116,8 @@
     && sudo systemctl restart kubelet
     ```
 
+Do this on kMaster:
+
 * Initialisation with kubeadm
     ```bash
     sudo kubeadm init --pod-network-cidr=192.168.0.0/16
@@ -125,3 +129,24 @@
     && sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config \
     && sudo chown $(id -u):$(id -g) $HOME/.kube/config
     ```
+
+* Deploy Calico Network
+    ```bash
+    kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
+    ```
+
+* Get cluster join command
+    ```bash
+    kubeadm token create --print-join-command
+    ```
+
+* Get Cluster Nodes
+    ```bash
+    kubectl get nodes
+    ```
+
+Do this on kWorker:
+* Copy and Pate the "Get cluster join command"
+
+
+Done
