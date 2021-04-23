@@ -1,5 +1,12 @@
 # Useful kubectl commands
 
+## Generally
+
+* cluster info
+    ```bash
+    kubectl cluter-info
+    ```
+
 ## Listing resources
 
 * pods
@@ -62,7 +69,7 @@ info: create (imperative management) vs apply (declarative management)
     
     ```
 
-## Shortcuts for Resource Types
+## Abbreviations for Resource Types
 
 Shortcut | Resource type
 ---- | ----
