@@ -11,7 +11,9 @@
 
 * Diable Swap:
     ```bash
+    sudo -i
     swapoff -a; sed -i '/swap/d' /etc/fstab
+    exit
     ```
 
 ### 2. Install Containerd Engine
