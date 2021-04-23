@@ -5,15 +5,13 @@
 * pods
     ```bash
     kubectl get pods #list of all pods
-    kubectl get po # list of all pods
 
-    kubectl get po -o wide #detailed pods infos incl. node name
-    kubectl get po --field-selector=spec.nodeName=server-name #list of all pods of a specific node server
+    kubectl get pods -o wide #detailed pods infos incl. node name
+    kubectl get pods --field-selector=spec.nodeName=server-name #list of all pods of a specific node server
     ```
 * nodes
     ```bash
     kubectl get nodes
-    kubectl get no
     ```
 
 ## Resource management
@@ -33,17 +31,18 @@ info: create (imperative management) vs apply (declarative management)
     kubectl create -f file-name
     ```
 
-### Applying
-* 
+### Applying and Updating
+* create new service, replication controller
     ```bash
-    
+    kubectl apply -f file-name.yaml
+    kubectl apply -f directory-name
     ```
-* 
+* update by editing it in a text editor (combi of get and apply)
     ```bash
-    
+    kubectl edit type/name
+    # example for editing a service:
+    kubectl edit svc/service-name
     ```
-
-### Updating
 * 
     ```bash
     
@@ -62,3 +61,30 @@ info: create (imperative management) vs apply (declarative management)
     ```bash
     
     ```
+
+## Shortcuts for Resource Types
+
+Shortcut | Resource type
+---- | ----
+csr | certificatesigningrequests
+cs | componentstatuses
+cm | configmaps
+ds | daemonsets
+deploy | deployments
+ep | endpoints
+ev | events
+hpa | horizontalpodautoscalers
+ing | ingresses
+limits | limitranges
+ns | namespaces
+no | nodes
+pvc | persistentvolumeclaims
+pv | persistentvolumes
+po | pods
+pdb | poddisruptionbudgets
+psp | podsecuritypolicies
+rs | replicasets
+rc | replicationcontrollers
+quota | resourcequotas
+sa | serviceaccounts
+svc | services
