@@ -21,5 +21,15 @@
 
         * Service Object
             * Purpose: Sets up networking in a K8s Cluster
-                * Types: ClusterIP, NodePort (exposes a container to the outside world - dev only), LoadBalancer, Ingress
-                * Selector: Im going to use my selector "component: web" to find every other object with a label of "component: web" and expose its port 3000 to the outside world
+                * type: ClusterIP, NodePort (exposes a container to the outside world - dev only), LoadBalancer, Ingress
+                * selector: Im going to use my selector "component: web" to find every other object with a label of "component: web" and expose its port 3000 to the outside world
+                * ports: (array)
+                    * port: another container/pod can get access to this pod 
+                    * targerPort: identical to the containerPort
+                    * nodePort: to access the pod e.g. via browser (if not specified port number ist random between 30000-32767)
+
+
+* create (imperative management) vs apply (declarative management)
+* <span style="color:#009eff">kubectl create</span> will throw an error if resource already exists, <span style="color:#009eff">kubectl apply</span> won't
+* <span style="color:#009eff">kubectl create</span> specifically says "do exactly these steps to arrive at this container setup"
+* whereas <span style="color:#009eff">kubectl apply</span> says "do whatever is necessary (create, update, ect.) to make it look like this"
