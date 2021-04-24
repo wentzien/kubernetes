@@ -25,7 +25,7 @@
 
 info: create (imperative management) vs apply (declarative management)
 * <span style="color:#009eff">kubectl create</span> will throw an error if resource already exists, <span style="color:#009eff">kubectl apply</span> won't
-* <span style="color:#009eff">kubectl create</span> specifically says "create this thing"
+* <span style="color:#009eff">kubectl create</span> specifically says "do exactly these steps to arrive at this container setup"
 * whereas <span style="color:#009eff">kubectl apply</span> says "do whatever is necessary (create, update, ect.) to make it look like this"
 
 ### Creating
