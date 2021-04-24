@@ -21,6 +21,14 @@
     kubectl get nodes
     ```
 
+## Get detailed info about an object
+    ```bash
+    kubectl describe object-type object-name
+
+    # get detailed info of an oject type
+    kubectl describe object-type
+    ```
+
 ## Resource management
 
 info: create (imperative management) vs apply (declarative management)
