@@ -26,7 +26,7 @@
     kubectl describe object-type object-name
 
     # get detailed info of an oject type
-    kubectl describe object-type
+    kubectl describe <object-type>
     ```
 
 ## Resource management
@@ -39,7 +39,7 @@ info: create (imperative management) vs apply (declarative management)
 ### Creating
 * run a new pod quickly
     ```bash
-    kubectl run pod-name --image=image-name --port=80
+    kubectl run pod-name --image=<image-name> --port=80
     ```
 * create a resource from a JSON/YAML file
     ```bash
@@ -49,14 +49,14 @@ info: create (imperative management) vs apply (declarative management)
 ### Applying and Updating
 * create new service, replication controller
     ```bash
-    kubectl apply -f file-name.yaml
-    kubectl apply -f directory-name
+    kubectl apply -f <config-file-name>
+    kubectl apply -f <directory-name>
     ```
 * update by editing it in a text editor (combi of get and apply)
     ```bash
-    kubectl edit type/name
+    kubectl edit <type>/<name>
     # example for editing a service:
-    kubectl edit svc/service-name
+    kubectl edit svc/<service-name>
     ```
 * 
     ```bash
@@ -70,7 +70,7 @@ info: create (imperative management) vs apply (declarative management)
 ### Deleting
 * 
     ```bash
-    
+    kubectl delete -f <config-file-name>
     ```
 * 
     ```bash
