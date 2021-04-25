@@ -58,7 +58,7 @@ info: create (imperative management) vs apply (declarative management)
     # example for editing a service:
     kubectl edit svc/<service-name>
     ```
-* updating a deployment's image (workaround):
+* re-pulling/updating a deployment's image (workaround):
     ```bash
     kubectl set image <object-type>/<object-name> <container-name> = <new-image-name>
     # e.g.
