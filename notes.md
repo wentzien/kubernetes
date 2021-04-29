@@ -18,6 +18,7 @@
         * Pod Object
             * Purpose: Run a groupe of containers with a very common purpose
             * E.g. Pod with postgres as primary container and logger & backup-manager as support container
+            * Good for development, rarely used in production
 
         * Service Object
             * Purpose: Sets up networking in a K8s Cluster
@@ -28,8 +29,18 @@
                     * targerPort: identical to the containerPort
                     * nodePort: to access the pod e.g. via browser (if not specified port number ist random between 30000-32767)
 
+        * Deployment:
+            * Purpose: Maintains a set of identical pods, ensuring that they have the correct config and that the right number exists
+            * Good for development and production
+            * Handels all created pods with the selector field  
+
+* Triggering Deployment Updates
+    * Problem: Force pods to re-pull an image without changing the image tag
+    * Solution/Workaround: Use of an imperative command
 
 * create (imperative management) vs apply (declarative management)
-* <span style="color:#009eff">kubectl create</span> will throw an error if resource already exists, <span style="color:#009eff">kubectl apply</span> won't
-* <span style="color:#009eff">kubectl create</span> specifically says "do exactly these steps to arrive at this container setup"
-* whereas <span style="color:#009eff">kubectl apply</span> says "do whatever is necessary (create, update, ect.) to make it look like this"
+    * <span style="color:#009eff">kubectl create</span> will throw an error if resource already exists, <span style="color:#009eff">kubectl apply</span> won't
+    * <span style="color:#009eff">kubectl create</span> specifically says "do exactly these steps to arrive at this container setup"
+    * whereas <span style="color:#009eff">kubectl apply</span> says "do whatever is necessary (create, update, ect.) to make it look like this"
+
+* Store data of a database with a persistent volume. Falls an old pod away, a new pod can connect to this persitent volume and no data is lost.
