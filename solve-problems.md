@@ -15,3 +15,7 @@
     ```bash
     kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
     ```
+* Text Editor is buggy in "edit deployment" :
+    ```bash
+    sudo apt-get install vim
+    ```
