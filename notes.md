@@ -44,3 +44,5 @@
     * whereas <span style="color:#009eff">kubectl apply</span> says "do whatever is necessary (create, update, ect.) to make it look like this"
 
 * Store data of a database with a persistent volume. Falls an old pod away, a new pod can connect to this persitent volume and no data is lost.
+
+* Store securely a piece of information (like)
