@@ -8,20 +8,20 @@
     Simple settings for testing and quick deploy (using NodePort instead of a LoadBalancer)
     ```yaml
     proxy:
-    secretToken: "<random-hex-token>"
-    service:
-        type: NodePort
-        nodePorts:
-        http: 30080
-        https: 30443
+        secretToken: "<random-hex-token>"
+        service:
+            type: NodePort
+            nodePorts:
+                http: 30080
+                https: 30443
 
     hub:
-    db:
-        type: sqlite-memory
+        db:
+            type: sqlite-memory
 
     singleuser:
-    storage:
-        type: sqlite-memory
+        storage:
+            type: sqlite-memory
     ```
 * Add JupyterHub Helm chart repository
     ```bash
