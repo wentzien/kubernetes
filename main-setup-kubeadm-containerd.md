@@ -124,9 +124,9 @@
 
 ## Do this on kMaster:
 
-* Initialisation with kubeadm
+* Initialisation with kubeadm for cluster network in intern network and security certificate for HS network
     ```bash
-    sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+    sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=10.42.0.2 --apiserver-cert-extra-sans=141.47.91.154
     ```
 
 * Finish conf setup
