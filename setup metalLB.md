@@ -37,6 +37,10 @@
           addresses:
           - 10.42.0.100-10.42.0.120
     ```
+* Apply the yaml-file
+    ```bash
+    kubectl apply -f /tmp/metallb.yaml
+    ```
 
 * Check if LoadBalancer is working by getting information about services. If a exposed service has a external IP in aboves range, the LoadBalancer is working
     ```bash
