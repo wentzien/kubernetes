@@ -47,5 +47,5 @@
 
 * Delete the installation:
     ```bash
-    kubectl delete jhub --namespace jhub
+    helm delete jhub --namespace jhub
     ```
