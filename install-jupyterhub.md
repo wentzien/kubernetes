@@ -23,6 +23,22 @@
         storage:
             type: sqlite-memory
     ```
+
+    ```yaml
+    proxy:
+    secretToken: 84283cbb9a7c882cc4b0bf958a54c6317a12a77340eb6a4897e5902da54d54f7
+
+    hub:
+        cookieSecret: 89e06e14dd69175b4353cf48f6156bd48e8e5539aee5b62c383ec3732396b36d
+        db:
+            type: mysql
+            url: mysql+pymysql://<dbuser>:<password>@<host/ip>:3306/<database>
+
+    singleuser:
+    type:
+            storage:
+                        type: sqlite-memory
+    ```
 * Add JupyterHub Helm chart repository
     ```bash
     helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
