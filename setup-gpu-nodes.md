@@ -7,7 +7,7 @@
     ```
 * Prerequisites
     * container engine (eg. containerd)
-    * nouveau driver for NVIDIA GPUs must be blacklisted (on HWE kerne -> Ubuntu 18.04 LTS or 20.04 LTS)
+    * nouveau driver for NVIDIA GPUs must be blacklisted (on HWE kernel -> Ubuntu 18.04 LTS or 20.04 LTS)
         open with editor:
         ```bash
         sudo vim /etc/modprobe.d/blacklist-nouveau.conf
