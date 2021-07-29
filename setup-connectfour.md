@@ -19,7 +19,7 @@ the application can be reached from the outside. For that a Load Balancing Solut
     metadata:
       name: connectfour-deployment
     spec:
-      replicas: 2 #numbers of pods 
+      replicas: 2 # numbers of pods 
       selector:
         matchLabels:
           app: connectfour
@@ -30,7 +30,7 @@ the application can be reached from the outside. For that a Load Balancing Solut
         spec:
           containers:
           - name: connectfour
-            image: wentzien/connectfour #docker image of the application
+            image: wentzien/connectfour # docker image of the application
             ports:
             - containerPort: 80
     ```
@@ -80,7 +80,29 @@ simply edit the deployment we created before.
     kubectl edit deployment connectfour-deployment
     ```
 
-* Edit the image to the new version (@Dennis hier bitte Image anpassen)
+* Edit the image to the new version
+
+  ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: connectfour-deployment
+    spec:
+      replicas: 2 #numbers of pods 
+      selector:
+        matchLabels:
+          app: connectfour
+      template:
+        metadata:
+          labels:
+            app: connectfour
+        spec:
+          containers:
+          - name: connectfour
+            image: wentzien/connectfour:v2 # new image version
+            ports:
+            - containerPort: 80
+    ```
 
 * Now the old pods are terminating while the new pods with the new image are starting. This can be seen be the following command. The application is still accessible with the External IP
 the Service.
