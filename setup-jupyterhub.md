@@ -31,7 +31,7 @@
 * Now the NFS Server is up and running and we can go back to the Master Node to use the storage in our Kubernetes System. For that we use Helm to install an NFS-Provisioner-Tool for Kubernetes (https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner/). First we add the Repo to our Helm installation and then install the NFS with some extra parameters. We have to define the IP and the Path of the NFS Server. 
     ```bash
     helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
-    --set nfs.server=10.42.0.8 \
+    --set nfs.server=10.42.0.2 \
     --set nfs.path=/srv/nfs/kubedata \
     --set parameters.archiveOnDelete=false
     ```
