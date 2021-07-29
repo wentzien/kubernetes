@@ -2,46 +2,63 @@
 
 Link to GitHub Repo [GitHub:wentzien/xmrig](https://github.com/wentzien/xmrig) and Docker Hub image [Docker:wentzien/xmrig](https://hub.docker.com/repository/docker/wentzien/xmrig)
 
-## Instructions
-You can either use the image with Docker or on Kubernetes.
+## Deploy on Kubernetes
 
-### using Docker
-* install on the host the required packages for max hashrate:
+### Requirements
+* at least 2.5 Gi Memory
+* Wallet for cryptocurrencies is needed
+* recommended to run one pod on one node for max efficiency
+
+### Instructions
+* create kube-xmrig-deployment.yaml
     ```bash
-    sudo apt -y install kmod msr-tools
+    vim kube-xmrig-deployment.yaml
     ```
-* run container
-    with default settings:
-    ```docker
-    docker run --name xmrig --privileged --cap-add ALL -v /lib/modules:/lib/modules wentzien/xmrig:1.0.4
+* add content to yaml and adjust env variable values:
+    attention: for the maximum hashrate, the pod needs access to the msr kernel of the host (node), so / lib / modules is mounted from the host to the pod (this is of course a security risk)
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+    name: xmrig-deployment
+    labels:
+        app: xmrig
+    spec:
+    replicas: 3
+    selector:
+        matchLabels:
+        app: xmrig
+    template:
+        metadata:
+        labels:
+            app: xmrig
+        spec:
+        containers:
+        - name: xmrig
+            image: wentzien/xmrig:1.0.1
+            env:
+            - name: pool
+            value: de.minexmr.com:443
+            - name: wallet_address
+            value: 4AePnmc5NxmNWArsL3tLgF8hyMeqnzzNMLTY4tEc5DSdVKCEijp4m7sckeUFU5ACChgVhoFHHasi2DFDFGp1METwNPDMbDs
+            - name: rig_id
+            value: "k8xmrigmining"
+            - name: donate_level
+            value: "1"
+            resources:
+            requests:
+                cpu: "2000m"
+                memory: 2.5Gi
+            securityContext:
+            privileged: true
+            volumeMounts:
+            - mountPath: "/lib/modules"
+            name: moduleslib
+        volumes:
+        - name: moduleslib
+            hostPath:
+            path: "/lib/modules"
     ```
-    with custom settings:
-    ```docker
-    docker run --name xmrig \
-        --env pool=<host-and-port-of-mining-pool> \
-        --env wallet_address=<your-wallet-address> \
-        --env rig_id=<custom-rig-id-name> \
-        --env donate_level=<donation-to-pool-in-percent> \
-        --privileged \
-        --cap-add ALL \
-        -v /lib/modules:/lib/modules \
-        wentzien/xmrig:1.0.4
-
-    #eg
-    sudo docker run --name xmrig \
-        --env pool=de.minexmr.com:443 \
-        --env wallet_address=4AePnmc5NxmNWArsL3tLgF8hyMeqnzzNMLTY4tEc5DSdVKCEijp4m7sckeUFU5ACChgVhoFHHasi2DFDFGp1METwNPDMbDs \
-        --env rig_id="mein mining rig" \
-        --env donate_level=1 \
-        --privileged \
-        --cap-add ALL \
-        -v /lib/modules:/lib/modules \
-        wentzien/xmrig:1.0.4
-    ```
-
-
-### using Kubernetes
-* use kube-xmrig-deployment.yaml
 * install on every node the required packages for max hashrate:
     ```bash
     sudo apt -y install kmod msr-tools
