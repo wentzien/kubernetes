@@ -8,10 +8,12 @@ the application can be reached from the outside. For that a Load Balancing Solut
 ## Deploy a Web-Application
 
 * Create YAML for Deployment by creating the file and pasting the following
+
     ```bash
     sudo nano connectfour-deployment.yaml
     ```
-    ````yaml
+
+    ```yaml
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -28,16 +30,18 @@ the application can be reached from the outside. For that a Load Balancing Solut
         spec:
           containers:
           - name: connectfour
-            image: wentzien/connectfour-client #docker image of the application
+            image: wentzien/connectfour #docker image of the application
             ports:
             - containerPort: 80
-       ````
+    ```
 
 * Create YAML for Service by creating the file and pasting the following
+
     ```bash
     sudo nano connectfour-service.yaml
     ```
-    ````yaml
+
+    ```yaml
     apiVersion: v1
     kind: Service
     metadata:
@@ -49,13 +53,17 @@ the application can be reached from the outside. For that a Load Balancing Solut
       ports:
         - port: 80
           targetPort: 80
-       ````
+    ```
+
 * Now both files have to be applied to deploy the application
+
     ```bash
     kubectl apply -f connectfour-deployment.yaml
     kubectl apply -f connectfour-service.yaml
     ```
+
 * After a few seconds the pods are created and ready. To access the application you need the External IP of the service provided by the Load Balancer. 
+
     ```bash
     kubectl get services
     ```
@@ -63,19 +71,20 @@ the application can be reached from the outside. For that a Load Balancing Solut
 ## Deploy a Web-Application
 
 Now the appliction is up and running on two pods. In the context of large business applications there are usallay more then 2 pods. The update all pods with a single step we can
-simply edit the deployment we created before. 
-    
-* Get the name of the deployment and edit it    
+simply edit the deployment we created before.
+
+* Get the name of the deployment and edit it
+
     ```bash
     kubectl get deployments
     kubectl edit deployment connectfour-deployment
     ```
-* Edit the image to the new version (@Dennis hier bitte Image anpassen)
 
+* Edit the image to the new version (@Dennis hier bitte Image anpassen)
 
 * Now the old pods are terminating while the new pods with the new image are starting. This can be seen be the following command. The application is still accessible with the External IP
 the Service.
+
     ```bash
     kubectl get pods
     ```
-
