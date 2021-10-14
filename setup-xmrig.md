@@ -17,6 +17,7 @@ Link to GitHub Repo [GitHub:wentzien/xmrig](https://github.com/wentzien/xmrig) a
 * add content to yaml and adjust env variable values:
     attention: for the maximum hashrate, the pod needs access to the msr kernel of the host (node), so / lib / modules is mounted from the host to the pod (this is of course a security risk)
 ```yaml
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: xmrig-deployment
