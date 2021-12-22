@@ -35,7 +35,7 @@
         - name: default
           protocol: layer2
           addresses:
-          - 10.42.0.100-10.42.0.120
+          - 10.42.10.100-10.42.10.120
     ```
 * Apply the yaml-file
     ```bash
